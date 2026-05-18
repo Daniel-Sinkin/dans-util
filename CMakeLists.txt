@@ -64,6 +64,7 @@ target_compile_options(dans_util_warnings INTERFACE
 )
 
 add_library(dans_util STATIC
+    src/dev.cpp
     src/util.cpp
 )
 add_library(dans::util ALIAS dans_util)
