@@ -68,6 +68,7 @@ add_library(dans_util STATIC
     src/dev.cpp
     src/env.cpp
     src/fmt.cpp
+    src/random.cpp
     src/str.cpp
     src/util.cpp
 )
