@@ -3,8 +3,10 @@
 #include <dans/development_markers.hpp>
 #include <dans/types.hpp>
 // StdLib
+#include <algorithm>
 #include <cassert>
 #include <concepts>
+#include <limits>
 #include <numbers>
 #include <utility>
 //
@@ -46,6 +48,61 @@ template <std::floating_point T>
 {
     assert(lo <= hi);
     return lo <= x and x <= hi;
+}
+
+template <std::floating_point T>
+[[nodiscard]] constexpr def unlerp(T a, T b, T x) -> T
+{
+    return (x - a) / (b - a);
+}
+
+template <std::floating_point T>
+[[nodiscard]] constexpr def remap(T x, T in_lo, T in_hi, T out_lo, T out_hi) -> T
+{
+    return out_lo + (x - in_lo) * (out_hi - out_lo) / (in_hi - in_lo);
+}
+
+template <std::floating_point T>
+[[nodiscard]] constexpr def approx_equal(
+    T a,
+    T b,
+    T abs_eps = std::numeric_limits<T>::epsilon() * T{100},
+    T rel_eps = std::numeric_limits<T>::epsilon() * T{100}) -> bool
+{
+    if (a == b) return true;
+    const auto diff = (a > b) ? (a - b) : (b - a);
+    if (diff <= abs_eps) return true;
+    const auto abs_a = (a < T{0}) ? -a : a;
+    const auto abs_b = (b < T{0}) ? -b : b;
+    return diff <= rel_eps * std::max(abs_a, abs_b);
+}
+
+template <std::floating_point T>
+[[nodiscard]] constexpr def almost_zero(
+    T x, T eps = std::numeric_limits<T>::epsilon() * T{100}) -> bool
+{
+    return ((x < T{0}) ? -x : x) <= eps;
+}
+
+template <std::integral T>
+[[nodiscard]] constexpr def ceil_div(T a, T b) -> T
+{
+    assert(a >= T{0} and b > T{0});
+    return a / b + (a % b != T{0} ? T{1} : T{0});
+}
+
+template <std::integral T>
+[[nodiscard]] constexpr def round_up_to(T n, T multiple) -> T
+{
+    assert(n >= T{0} and multiple > T{0});
+    return ceil_div(n, multiple) * multiple;
+}
+
+template <std::unsigned_integral T>
+[[nodiscard]] constexpr def align_up(T value, T alignment) -> T
+{
+    assert(alignment > T{0} and (alignment & (alignment - T{1})) == T{0});
+    return (value + alignment - T{1}) & ~(alignment - T{1});
 }
 }  // namespace dans::math
 
