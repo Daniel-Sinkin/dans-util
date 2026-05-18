@@ -66,6 +66,7 @@ target_compile_options(dans_util_warnings INTERFACE
 add_library(dans_util STATIC
     src/chrono.cpp
     src/dev.cpp
+    src/fmt.cpp
     src/str.cpp
     src/util.cpp
 )
