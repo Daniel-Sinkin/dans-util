@@ -18,7 +18,9 @@ watch_args=(
     --stop-timeout 2s
     --watch CMakeLists.txt
     --watch app
+    --watch include
     --watch src
+    --watch vendor/dans-core/include
     --watch .dans_dev
     --watch .clang-format
     --watch .clang-tidy

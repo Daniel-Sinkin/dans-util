@@ -4,19 +4,14 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${repo_root}"
 
-build_dir="${DANS_TEMPLATE_BUILD_DIR:-build}"
-target="dans_template"
+build_dir="${DANS_UTIL_BUILD_DIR:-build}"
+target="dans_util_scratch"
 
 cmake_args=(-S . -B "${build_dir}")
-if [[ -d "${repo_root}/../dans-core" ]]; then
-    cmake_args+=("-DDANS_CORE_SOURCE_DIR=${repo_root}/../dans-core")
-fi
 
-if [[ ! -f "${build_dir}/CMakeCache.txt" ]]; then
-    cmake "${cmake_args[@]}"
-fi
+cmake "${cmake_args[@]}"
 
-build_log="$(mktemp "${TMPDIR:-/tmp}/dans_template_build.XXXXXX")"
+build_log="$(mktemp "${TMPDIR:-/tmp}/dans_util_build.XXXXXX")"
 cleanup() {
     rm -f "${build_log}"
 }

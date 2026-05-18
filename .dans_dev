@@ -1,4 +1,4 @@
-# dans-template project-local development config
+# dans-util project-local development config
 marker_tidy = true
 build_dir = build
 marker_tidy_translation_units = app/main.cpp

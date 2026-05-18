@@ -1,6 +1,7 @@
-# dans-template
+# dans-util
 
-Starter C++ project template for my personal projects.
+Personal C++ utility library.
 
-This template uses `dans-core` for shared foundation headers and prefers a local
-sibling checkout at `../dans-core` when `./run.sh` configures the project.
+`dans-core` is vendored as plain files under `vendor/dans-core` and is used only
+as a private implementation dependency of this repo. CMake does not fetch it,
+discover it, or treat it as a nested package.
