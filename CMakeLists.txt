@@ -79,8 +79,7 @@ target_link_libraries(dans_util PRIVATE
 target_include_directories(dans_util
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/dans-core/include
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/vendor/dans-core/include>
 )
 target_precompile_headers(dans_util PRIVATE
     <dans/pch.hpp>
