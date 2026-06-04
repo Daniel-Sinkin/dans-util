@@ -36,16 +36,16 @@ template <typename T>
 {
     if (values.empty()) return Summary{};
 
-    mut std::vector<f64> sorted{};
+    std::vector<f64> sorted{};
     sorted.reserve(values.size());
     for (const auto v : values) sorted.push_back(static_cast<f64>(v));
     std::ranges::sort(sorted);
 
-    mut auto sum = 0.0;
+    auto sum = 0.0;
     for (const auto v : sorted) sum += v;
     const auto mean = sum / static_cast<f64>(sorted.size());
 
-    mut auto sq_sum = 0.0;
+    auto sq_sum = 0.0;
     for (const auto v : sorted)
     {
         const auto d = v - mean;

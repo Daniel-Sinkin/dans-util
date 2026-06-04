@@ -31,7 +31,7 @@ namespace dans::env
 {
     const auto value = get(name);
     if (not value.has_value() or value->empty()) return std::nullopt;
-    mut i64 result{};
+    i64 result{};
     const auto* begin = value->data();
     const auto* end = value->data() + value->size();
     const auto [ptr, ec] = std::from_chars(begin, end, result);
@@ -44,7 +44,7 @@ namespace dans::env
     const auto value = get(name);
     if (not value.has_value() or value->empty()) return std::nullopt;
 
-    mut std::string normalized{};
+    std::string normalized{};
     normalized.reserve(value->size());
     for (const auto c : *value)
     {
