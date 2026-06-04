@@ -1,4 +1,5 @@
 // include/dans/types.hpp
+// https://github.com/Daniel-Sinkin/dans-core v0.1
 
 #ifndef DANS_CORE_INCLUDE_DANS_TYPES_HPP
 #define DANS_CORE_INCLUDE_DANS_TYPES_HPP

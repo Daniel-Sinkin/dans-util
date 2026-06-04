@@ -1,4 +1,5 @@
 // include/dans/development_markers.hpp
+// https://github.com/Daniel-Sinkin/dans-core v0.1
 
 #ifndef DANS_CORE_INCLUDE_DANS_DEVELOPMENT_MARKERS_HPP
 #define DANS_CORE_INCLUDE_DANS_DEVELOPMENT_MARKERS_HPP

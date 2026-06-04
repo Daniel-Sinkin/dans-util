@@ -1,4 +1,5 @@
 // include/dans/stats.hpp
+// https://github.com/Daniel-Sinkin/dans-util v0.2
 // Externals
 #include <dans/development_markers.hpp>
 #include <dans/types.hpp>

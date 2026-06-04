@@ -1,4 +1,5 @@
 // include/dans/overload.hpp
+// https://github.com/Daniel-Sinkin/dans-util v0.2
 
 #pragma once
 #ifndef DANS_OVERLOAD_HPP

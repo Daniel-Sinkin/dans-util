@@ -1,4 +1,5 @@
 // include/dans/pch.hpp
+// https://github.com/Daniel-Sinkin/dans-core v0.1
 
 #ifndef DANS_CORE_INCLUDE_DANS_PCH_HPP
 #define DANS_CORE_INCLUDE_DANS_PCH_HPP
