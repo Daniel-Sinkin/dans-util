@@ -7,8 +7,10 @@
 #include <algorithm>
 #include <cassert>
 #include <concepts>
+#include <functional>
 #include <limits>
 #include <numbers>
+#include <ranges>
 #include <utility>
 //
 
@@ -104,6 +106,23 @@ template <std::unsigned_integral T>
 {
     assert(alignment > T{0} and (alignment & (alignment - T{1})) == T{0});
     return (value + alignment - T{1}) & ~(alignment - T{1});
+}
+
+template <std::ranges::input_range R>
+    requires std::is_arithmetic_v<std::ranges::range_value_t<R>>
+[[nodiscard]] constexpr def sum(const R& values) -> std::ranges::range_value_t<R>
+{
+    using T = std::ranges::range_value_t<R>;
+    return std::ranges::fold_left(values, T{0}, std::plus{});
+}
+
+template <std::ranges::input_range R>
+    requires std::is_arithmetic_v<std::ranges::range_value_t<R>>
+[[nodiscard]] constexpr def mean(const R& values) -> f64
+{
+    assert(not std::ranges::empty(values));
+    const auto total = std::ranges::fold_left(values, f64{0}, std::plus{});
+    return total / static_cast<f64>(std::ranges::distance(values));
 }
 }  // namespace dans::math
 
