@@ -6,32 +6,30 @@
 
 #pragma once
 
-#include <type_traits>
+#include <type_traits> // IWYU pragma: keep
 
 #if defined(cpy)
-#    error "cpy marker macro is already defined"
+#error "cpy marker macro is already defined"
 #endif
 
 #if defined(def)
-#    error "def marker macro is already defined"
+#error "def marker macro is already defined"
 #endif
 
 #if defined(__clang__)
-#    define cpy [[clang::annotate("cpy")]]
+#define cpy [[clang::annotate("cpy")]]
 #else
-#    define cpy
+#define cpy
 #endif
 
 // Only use this on the auto for functions when using trailing return
 #define def auto
 
-namespace dans
-{
+namespace dans {
 template <typename T>
-[[nodiscard]] constexpr def copy(const T& value) -> std::remove_cvref_t<T>
-{
+[[nodiscard]] constexpr def copy(const T &value) -> std::remove_cvref_t<T> {
     return value;
 }
-}  // namespace dans
+} // namespace dans
 
-#endif  // DANS_CORE_INCLUDE_DANS_DEVELOPMENT_MARKERS_HPP
+#endif // DANS_CORE_INCLUDE_DANS_DEVELOPMENT_MARKERS_HPP
